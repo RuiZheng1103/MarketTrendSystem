@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: ruizheng
+Build-Jdk: 11.0.3
+Implementation-Title: trend-trading-backtest-view
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.rui.trend
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/trendParentProject/trend-trading-backtest-view
+Created-By: Maven Integration for Eclipse
+

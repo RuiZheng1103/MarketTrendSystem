@@ -13,9 +13,9 @@ import cn.hutool.core.util.NetUtil;
 @EnableZuulProxy
 @EnableDiscoveryClient
 public class IndexZuulServiceApplication {
-//  http://127.0.0.1:8031/api-codes/codes
+
     public static void main(String[] args) {
-        int port = 8031;
+        int port = 8888;
         if(!NetUtil.isUsableLocalPort(port)) {
             System.err.printf("PORT %d has been used %n", port );
             System.exit(1);
