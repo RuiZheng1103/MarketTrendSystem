@@ -15,7 +15,7 @@ import cn.hutool.core.util.NetUtil;
 public class IndexZuulServiceApplication {
 
     public static void main(String[] args) {
-        int port = 8888;
+        int port = 8031;
         if(!NetUtil.isUsableLocalPort(port)) {
             System.err.printf("PORT %d has been used %n", port );
             System.exit(1);
