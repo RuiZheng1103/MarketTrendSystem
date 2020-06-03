@@ -8,7 +8,9 @@ import java.util.concurrent.TimeoutException;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
- 
+import org.springframework.context.annotation.Bean;
+
+import brave.sampler.Sampler;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.core.util.NetUtil;
@@ -22,12 +24,22 @@ public class TrendTradingBackTestViewApplication {
         int port = 0;
         int defaultPort = 8041;
         int eurekaServerPort = 8761;
- 
+        int configServerPort = 8060;
+//        int rabbitMQPort = 5672;
+        
         if(NetUtil.isUsableLocalPort(eurekaServerPort)) {
             System.err.printf("eureka start Fail with PORT : %d%n", eurekaServerPort );
             System.exit(1);
         }
- 
+        if(NetUtil.isUsableLocalPort(eurekaServerPort)) {
+            System.err.printf("config server start Fail with PORT : %d%n", configServerPort );
+            System.exit(1);
+        }
+//        if(NetUtil.isUsableLocalPort(rabbitMQPort)) {
+//            System.err.printf("rabbitmq server start Fail with PORT : %d%n", rabbitMQPort );
+//            System.exit(1);
+//        }
+        
         if(null!=args && 0!=args.length) {
             for (String arg : args) {
                 if(arg.startsWith("port=")) {
@@ -73,4 +85,8 @@ public class TrendTradingBackTestViewApplication {
         new SpringApplicationBuilder(TrendTradingBackTestViewApplication.class).properties("server.port=" + port).run(args);
          
     }
+    @Bean
+	public Sampler defaultSampler() {
+		return Sampler.ALWAYS_SAMPLE;
+	}
 }
