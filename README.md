@@ -1,6 +1,6 @@
 # Market Trend Investment System
 
-Market Trend Investment System Demo
+Market Trend Investment System Demo.
 
 ## Getting Started
 
@@ -8,32 +8,86 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+What things you need to install the software and how to install them based on Mac OS:
 
 ```
-Spring Suit Tool 3
-Redis
-RadditMQ
-Zipkin
+IDE: Spring Suit Tool 3 
+JDK: Java 8
+DataBase: Redis 6.0
+Java Message Server: RadditMQ 3.8
+Distributed Tracing System: Zipkin 2.20
+
 ```
-## Contructioning -----------------------------
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+A step by step series of examples that tell you how to get a development env running through terminal.
 
-Say what the step will be
+#### Redis
 
-```
-Give the example
-```
-
-And repeat
+Download, extract and compile Redis: 
 
 ```
-until finished
+$ wget http://download.redis.io/releases/redis-6.0.4.tar.gz
+$ tar xzf redis-6.0.4.tar.gz
+$ cd redis-6.0.4
+$ make
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+Run Redis:
+
+```
+$ src/redis-server
+```
+
+Open another terminal for test based on Redis-cli:
+
+```
+$ src/redis-cli
+redis> set foo bar
+OK
+redis> get foo
+"bar"
+```
+If test fails, please go and check at https://redis.io/download.
+
+#### RabbitMQ
+Before installing make sure the tap is updated:
+
+```
+$ brew update
+$ brew install rabbitmq
+$ export PATH=$PATH:/usr/local/sbin to your .bash_profile or .profile or .bashrc
+```
+
+Start Server:
+
+```
+$ brew services start rabbitmq 
+```
+
+RabbitMQ web management plugin:
+
+```
+$ rabbitmq-plugins enable rabbitmq_management
+```
+If any problem, please go and check at https://www.rabbitmq.com/install-homebrew.html
+
+
+#### Zipkin
+If you have Java 8 or higher installed, the quickest way to get started is to fetch the latest release as a self-contained executable jar:
+
+```
+$ curl -sSL https://zipkin.io/quickstart.sh | bash -s
+$ java -jar zipkin.jar
+```
+
+Start Zipkin:
+
+```
+browse to http://localhost:9411 
+```
+
+If any problem, please go and check at https://zipkin.io/pages/quickstart.
 
 
 ## Running the tests
