@@ -92,7 +92,41 @@ If any problem, please go and check at https://zipkin.io/pages/quickstart.
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+#####Before tests, start Redis, RabbitMQ and Zipkin at first.
+
+Import those projects as maven projects (NOTE: trendParentProject is parent project):
+
+```
+  <modules>
+    <module>eureka-server</module>
+    <module>third-part-index-data-project</module>
+    <module>index-gather-store-service</module>
+    <module>index-codes-service</module>
+    <module>index-data-service</module>
+    <module>index-zuul-service</module>
+    <module>trend-trading-backtest-service</module>
+    <module>trend-trading-backtest-view</module>
+    <module>index-hystrix-dashboard</module>
+    <module>index-turbine</module>
+    <module>index-config-server</module>
+  </modules>
+```
+
+Start those project as spring boot application as follow order:
+
+```
+eureka-server
+third-part-index-data-project
+index-gather-store-service
+index-config-server
+index-codes-service
+index-data-service
+trend-trading-backtest-service
+trend-trading-backtest-view
+index-hystrix-dashboard
+index-zuul-service
+```
+
 
 ### Break down into end to end tests
 
